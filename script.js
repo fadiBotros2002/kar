@@ -53,6 +53,22 @@
         }
     }
 
+    function stopSong() {
+        if (!song) return;
+        song.pause();
+        song.currentTime = 0;
+    }
+
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+            if (song) song.pause();
+            return;
+        }
+        if (cover.classList.contains("is-open")) tryPlay();
+    });
+
+    window.addEventListener("pagehide", stopSong);
+
     function pad(value) {
         return String(value).padStart(2, "0");
     }
