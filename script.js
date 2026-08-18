@@ -1,13 +1,11 @@
 (function () {
     const WEDDING_AT = new Date("2026-09-09T19:00:00+03:00");
     const cover = document.getElementById("cover");
-    const gift = document.getElementById("gift");
-    const stringPull = document.getElementById("stringPull");
+    const openInvite = document.getElementById("openInvite");
     const song = document.getElementById("song");
     const countdown = document.getElementById("countdown");
     const countDone = document.getElementById("countDone");
     const addToCalendar = document.getElementById("addToCalendar");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const IMAGE_EXTS = ["jpeg", "jpg", "png", "webp"];
 
     function loadPhoto(fileName, onFound) {
@@ -37,29 +35,14 @@
     document.body.classList.add("is-locked");
 
     function openInvitation() {
+        if (cover.classList.contains("is-open")) return;
+        tryPlay();
         cover.classList.add("is-open");
         document.body.classList.remove("is-locked");
         window.scrollTo(0, 0);
-        tryPlay();
     }
 
-    function openFromSeal() {
-        if (gift.classList.contains("is-opening")) return;
-        gift.classList.add("is-opening");
-        tryPlay();
-        window.setTimeout(function () {
-            gift.classList.add("is-open");
-        }, 180);
-        window.setTimeout(openInvitation, 1100);
-    }
-
-    stringPull.addEventListener("click", openFromSeal);
-    stringPull.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            openFromSeal();
-        }
-    });
+    openInvite.addEventListener("click", openInvitation);
 
     function tryPlay() {
         if (!song) return;

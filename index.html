@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#1e3a2f">
+    <meta name="theme-color" content="#f6f0e4">
     <meta name="description" content="نتشرف بدعوتكم لحضور حفل زفاف كارولين وماهر — الأربعاء ٩ أيلول ٢٠٢٦، دير سيدة صيدنايا.">
     <meta property="og:title" content="دعوة زفاف | كارولين و ماهر">
     <meta property="og:description" content="الأربعاء ٩ أيلول ٢٠٢٦ · الساعة السابعة مساءً · دير سيدة صيدنايا">
@@ -12,7 +12,7 @@
     <title>كارولين و ماهر | دعوة زفاف</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,72 +20,52 @@
     <audio id="song" src="song/zaffa.m4a" preload="auto" loop hidden></audio>
 
     <div class="cover is-ready" id="cover">
-        <div class="envelope" id="gift">
-            <div class="envelope__body" id="weddingCard">
-                <div class="envelope__flap" aria-hidden="true"></div>
-                <button type="button" class="seal" id="stringPull" aria-label="فتح الدعوة">
-                    <img src="images/wax-seal.png" alt="">
-                </button>
+        <div class="cover-card">
+            <div class="cover-inner">
+                <p class="cover-kicker">دعوة زفاف</p>
+                <div class="cover-portrait">
+                    <img src="images/2.jpeg" alt="كارولين وماهر">
+                </div>
+                <h1 class="cover-names">كارولين <span>&amp;</span> ماهر</h1>
+                <p class="cover-meta">الأربعاء ٩ أيلول ٢٠٢٦</p>
+                <button type="button" class="cover-open" id="openInvite">افتح الدعوة</button>
             </div>
         </div>
     </div>
 
-    <div class="stage" id="stage">
-        <article class="sheet">
-            <svg class="sprig sprig--tr" viewBox="0 0 160 220" aria-hidden="true">
-                <g fill="none" stroke="#6d8a72" stroke-width="1.4" stroke-linecap="round">
-                    <path d="M30 210 C70 150 90 90 140 20"/>
-                    <path d="M62 168 C78 150 96 148 118 140"/>
-                    <path d="M54 128 C74 116 90 108 112 92"/>
-                    <path d="M78 86 C96 70 112 58 128 42"/>
-                </g>
-                <g fill="#7f9a7c" opacity="0.85">
-                    <ellipse cx="118" cy="140" rx="14" ry="7" transform="rotate(-28 118 140)"/>
-                    <ellipse cx="112" cy="92" rx="13" ry="6" transform="rotate(-36 112 92)"/>
-                    <ellipse cx="128" cy="42" rx="12" ry="6" transform="rotate(-40 128 42)"/>
-                    <ellipse cx="86" cy="158" rx="11" ry="5" transform="rotate(-18 86 158)"/>
-                    <ellipse cx="72" cy="118" rx="10" ry="5" transform="rotate(-24 72 118)"/>
-                </g>
-            </svg>
-            <svg class="sprig sprig--bl" viewBox="0 0 160 220" aria-hidden="true">
-                <g fill="none" stroke="#6d8a72" stroke-width="1.4" stroke-linecap="round">
-                    <path d="M130 10 C90 70 70 130 20 200"/>
-                    <path d="M98 52 C82 70 64 72 42 80"/>
-                    <path d="M106 92 C86 104 70 112 48 128"/>
-                    <path d="M82 134 C64 150 48 162 32 178"/>
-                </g>
-                <g fill="#7f9a7c" opacity="0.85">
-                    <ellipse cx="42" cy="80" rx="14" ry="7" transform="rotate(28 42 80)"/>
-                    <ellipse cx="48" cy="128" rx="13" ry="6" transform="rotate(36 48 128)"/>
-                    <ellipse cx="32" cy="178" rx="12" ry="6" transform="rotate(40 32 178)"/>
-                </g>
-            </svg>
+    <main class="site" id="stage">
+        <header class="hero">
+            <img class="hero__img" id="heroPhoto" src="images/1.jpeg" alt="">
+            <div class="hero__veil"></div>
+            <div class="hero__content">
+                <p class="kicker kicker--light">The Beginning of Forever</p>
+                <h1 class="names names--light">كارولين <span class="amp">&amp;</span> ماهر</h1>
+                <p class="hero__date">الأربعاء ٩ أيلول ٢٠٢٦ · دير سيدة صيدنايا</p>
+            </div>
+        </header>
 
-            <header class="hero section reveal">
-                <p class="kicker">The Wedding Of</p>
+        <section class="intro wrap reveal">
+            <div class="intro__photo">
                 <div class="portrait">
-                    <img id="slideA" alt="كارولين وماهر">
+                    <img id="slideA" src="images/2.jpeg" alt="كارولين وماهر">
                 </div>
-                <h1 class="names">
-                    <span>كارولين</span>
-                    <em>&amp;</em>
-                    <span>ماهر</span>
-                </h1>
+            </div>
+            <div class="intro__copy">
+                <p class="kicker">Welcome</p>
+                <h2 class="section-title">بقلوبٍ ملؤها الفرح</h2>
+                <p class="letter__body">نتشرف بدعوتكم لمشاركتنا فرحة العمر وتتويج قصة حبنا.</p>
                 <p class="families">
                     عائلة السيد الياس هلالة
-                    <span>و</span>
+                    <span class="families__and">&</span>
                     عائلة السيد زهير بيطار
                 </p>
-            </header>
+            </div>
+        </section>
 
-            <section class="letter section reveal">
-                <p class="letter__lead">بقلوبٍ ملؤها الفرح</p>
-                <p class="letter__body">نتشرف بدعوتكم لمشاركتنا فرحة العمر<br>وتتويج قصة حبنا</p>
-            </section>
-
-            <section class="section reveal" aria-labelledby="count-title">
+        <section class="count-band reveal">
+            <div class="wrap">
                 <p class="kicker">Until We Meet</p>
-                <h2 id="count-title" class="script-title">العدّ التنازلي</h2>
+                <h2 class="section-title">العدّ التنازلي</h2>
                 <div class="count" id="countdown">
                     <div class="count__item"><span class="count__num" data-unit="days">00</span><span class="count__label">يوم</span></div>
                     <div class="count__item"><span class="count__num" data-unit="hours">00</span><span class="count__label">ساعة</span></div>
@@ -93,43 +73,70 @@
                     <div class="count__item"><span class="count__num" data-unit="seconds">00</span><span class="count__label">ثانية</span></div>
                 </div>
                 <p class="count-done" id="countDone" hidden>بدأت الحكاية</p>
-            </section>
+            </div>
+        </section>
 
-            <section class="info section reveal" aria-labelledby="details-title">
-                <h2 id="details-title" class="script-title">Details</h2>
-                <div class="info__block">
-                    <p class="info__label">Location</p>
-                    <p class="info__value">دير سيدة صيدنايا</p>
-                    <p class="info__sub">صيدنايا · ريف دمشق</p>
+        <section class="event wrap reveal">
+            <p class="kicker">The Celebration</p>
+          
+            <div class="details">
+                <div class="detail">
+                    <p class="detail__label">التاريخ</p>
+                    <p class="detail__value">الأربعاء ٩ أيلول ٢٠٢٦</p>
                 </div>
-                <div class="info__block">
-                    <p class="info__label">Date &amp; Time</p>
-                    <p class="info__value">الأربعاء ٩ أيلول ٢٠٢٦</p>
-                    <p class="info__sub">الساعة السابعة مساءً</p>
+                <div class="detail">
+                    <p class="detail__label">الوقت</p>
+                    <p class="detail__value">الساعة السابعة مساءً</p>
                 </div>
-                <div class="info__block">
-                    <p class="info__label">RSVP</p>
-                    <p class="info__value">نرجو تأكيد الحضور</p>
-                    <p class="info__sub">قبل موعد الحفل</p>
+                <div class="detail">
+                    <p class="detail__label">المكان</p>
+                    <p class="detail__value">دير سيدة صيدنايا</p>
                 </div>
-                <div class="info__block">
-                    <p class="info__label">Attire</p>
-                    <p class="info__value">رسمي وأنيق</p>
-                    <p class="info__sub">Formal</p>
-                </div>
-            </section>
-
-            <section class="section reveal actions">
+            </div>
+            <div class="actions">
                 <a class="btn btn--solid" href="https://www.google.com/maps/search/?api=1&amp;query=%D8%AF%D9%8A%D8%B1+%D8%B3%D9%8A%D8%AF%D8%A9+%D8%B5%D9%8A%D8%AF%D9%86%D8%A7%D9%8A%D8%A7" target="_blank" rel="noopener noreferrer">عرض الموقع على الخريطة</a>
                 <button type="button" class="btn btn--ghost" id="addToCalendar">أضف الموعد إلى التقويم</button>
-            </section>
+            </div>
+        </section>
 
-            <footer class="finale section reveal">
-                <p class="finale__text">حضوركم يكتمل به الفرح</p>
-                <p class="finale__mark">كارولين و ماهر</p>
-            </footer>
-        </article>
-    </div>
+        <section class="gallery" aria-label="صور كارولين وماهر">
+            <div class="gallery__track">
+                <div class="gallery__set">
+                    <figure class="gallery__item gallery__item--close">
+                        <img src="images/2.jpeg" alt="كارولين وماهر">
+                    </figure>
+                    <figure class="gallery__item gallery__item--full">
+                        <img src="images/1.jpeg" alt="كارولين وماهر">
+                    </figure>
+                    <figure class="gallery__item gallery__item--close">
+                        <img src="images/2.jpeg" alt="">
+                    </figure>
+                    <figure class="gallery__item gallery__item--full">
+                        <img src="images/1.jpeg" alt="">
+                    </figure>
+                </div>
+                <div class="gallery__set" aria-hidden="true">
+                    <figure class="gallery__item gallery__item--close">
+                        <img src="images/2.jpeg" alt="">
+                    </figure>
+                    <figure class="gallery__item gallery__item--full">
+                        <img src="images/1.jpeg" alt="">
+                    </figure>
+                    <figure class="gallery__item gallery__item--close">
+                        <img src="images/2.jpeg" alt="">
+                    </figure>
+                    <figure class="gallery__item gallery__item--full">
+                        <img src="images/1.jpeg" alt="">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <footer class="finale">
+            <p class="finale__text">حضوركم يكتمل به الفرح</p>
+            <p class="finale__mark">كارولين و ماهر</p>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
