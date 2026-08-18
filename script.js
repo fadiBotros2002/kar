@@ -119,15 +119,15 @@
         const ics = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//Caroline & Maher//Wedding//AR",
+            "PRODID:-//Maher & Karolin//Wedding//AR",
             "CALSCALE:GREGORIAN",
             "BEGIN:VEVENT",
             "DTSTAMP:20260909T000000Z",
             "DTSTART:20260909T160000Z",
             "DTEND:20260909T200000Z",
-            "SUMMARY:زفاف كارولين وماهر",
+            "SUMMARY:زفاف ماهر وكارولين",
             "LOCATION:دير سيدة صيدنايا",
-            "DESCRIPTION:نتشرف بدعوتكم لحضور حفل زفاف كارولين وماهر — الساعة السابعة مساءً.",
+            "DESCRIPTION:نتشرف بدعوتكم لحضور حفل زفاف ماهر وكارولين — الساعة السابعة مساءً.",
             "END:VEVENT",
             "END:VCALENDAR"
         ].join("\r\n");
@@ -136,7 +136,7 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "caroline-maher-wedding.ics";
+        link.download = "maher-karolin-wedding.ics";
         document.body.appendChild(link);
         link.click();
         link.remove();
