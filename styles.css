@@ -77,35 +77,20 @@ body.is-locked {
     text-align: center;
 }
 
-.cover-crest {
-    position: relative;
-    width: min(78vw, 19.2rem);
-    aspect-ratio: 1;
-    display: grid;
-    place-items: center;
-}
-
-.cover-arc {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-}
-
-.cover-arc__text {
-    fill: var(--gold-deep);
+.cover-kicker {
+    margin: 0;
+    max-width: 20rem;
     font-family: "Amiri", serif;
-    font-size: 11.4px;
+    font-size: clamp(1.02rem, 3.6vw, 1.18rem);
     font-weight: 700;
-    letter-spacing: 0.35px;
+    line-height: 1.9;
+    color: var(--gold-deep);
 }
 
 .cover-portrait {
-    width: 68%;
+    width: min(56vw, 14.5rem);
     aspect-ratio: 1;
-    margin: 0;
+    margin: 1.35rem 0 0;
     padding: 0.38rem;
     border-radius: 50%;
     background: linear-gradient(135deg, #e8d5a3, var(--gold) 42%, #8d6a32);
