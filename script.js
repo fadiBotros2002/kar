@@ -7,6 +7,67 @@
     const countDone = document.getElementById("countDone");
     const addToCalendar = document.getElementById("addToCalendar");
     const IMAGE_EXTS = ["jpeg", "jpg", "png", "webp"];
+    const COVER_BLESSING = "يا من جمعتنا بإسمك وكنت الثالث بيننا نعدك أن لا نفرق ما جمعته يداك";
+
+    const ARABIC_FORMS = {
+        ا: ["ﺍ", "ﺎ", "ﺍ", "ﺎ"], أ: ["ﺃ", "ﺄ", "ﺃ", "ﺄ"], إ: ["ﺇ", "ﺈ", "ﺇ", "ﺈ"], آ: ["ﺁ", "ﺂ", "ﺁ", "ﺂ"],
+        ب: ["ﺏ", "ﺐ", "ﺑ", "ﺒ"], ت: ["ﺕ", "ﺖ", "ﺗ", "ﺘ"], ث: ["ﺙ", "ﺚ", "ﺛ", "ﺜ"],
+        ج: ["ﺝ", "ﺞ", "ﺟ", "ﺠ"], ح: ["ﺡ", "ﺢ", "ﺣ", "ﺤ"], خ: ["ﺥ", "ﺦ", "ﺧ", "ﺨ"],
+        د: ["ﺩ", "ﺪ", "ﺩ", "ﺪ"], ذ: ["ﺫ", "ﺬ", "ﺫ", "ﺬ"], ر: ["ﺭ", "ﺮ", "ﺭ", "ﺮ"], ز: ["ﺯ", "ﺰ", "ﺯ", "ﺰ"],
+        س: ["ﺱ", "ﺲ", "ﺳ", "ﺴ"], ش: ["ﺵ", "ﺶ", "ﺷ", "ﺸ"], ص: ["ﺹ", "ﺺ", "ﺻ", "ﺼ"], ض: ["ﺽ", "ﺾ", "ﺿ", "ﻀ"],
+        ط: ["ﻁ", "ﻂ", "ﻃ", "ﻄ"], ظ: ["ﻅ", "ﻆ", "ﻇ", "ﻈ"], ع: ["ﻉ", "ﻊ", "ﻋ", "ﻌ"], غ: ["ﻍ", "ﻎ", "ﻏ", "ﻐ"],
+        ف: ["ﻑ", "ﻒ", "ﻓ", "ﻔ"], ق: ["ﻕ", "ﻖ", "ﻗ", "ﻘ"], ك: ["ﻙ", "ﻚ", "ﻛ", "ﻜ"], ل: ["ﻝ", "ﻞ", "ﻟ", "ﻠ"],
+        م: ["ﻡ", "ﻢ", "ﻣ", "ﻤ"], ن: ["ﻥ", "ﻦ", "ﻧ", "ﻨ"], ه: ["ﻩ", "ﻪ", "ﻫ", "ﻬ"], و: ["ﻭ", "ﻮ", "ﻭ", "ﻮ"],
+        ي: ["ﻱ", "ﻲ", "ﻳ", "ﻴ"], ى: ["ﻯ", "ﻰ", "ﻯ", "ﻰ"], ة: ["ﺓ", "ﺔ", "ﺓ", "ﺔ"],
+        ئ: ["ﺉ", "ﺊ", "ﺋ", "ﺌ"], ؤ: ["ﺅ", "ﺆ", "ﺅ", "ﺆ"], ء: ["ء", "ء", "ء", "ء"]
+    };
+    const ARABIC_RIGHT = /[اأإآدذرزوؤةى]/;
+    const LAM_ALEF = { ا: ["ﻻ", "ﻼ"], أ: ["ﻷ", "ﻸ"], إ: ["ﻹ", "ﻺ"], آ: ["ﻵ", "ﻶ"] };
+
+    function canJoin(ch) {
+        return Boolean(ARABIC_FORMS[ch]);
+    }
+
+    function dualJoin(ch) {
+        return canJoin(ch) && !ARABIC_RIGHT.test(ch);
+    }
+
+    function reshapeArabic(text) {
+        const chars = Array.from(text);
+        let out = "";
+        for (let i = 0; i < chars.length; i += 1) {
+            const ch = chars[i];
+            const next = chars[i + 1];
+            const prev = chars[i - 1];
+            if (ch === "ل" && next && LAM_ALEF[next]) {
+                const joinPrev = prev && dualJoin(prev);
+                out += LAM_ALEF[next][joinPrev ? 1 : 0];
+                i += 1;
+                continue;
+            }
+            const forms = ARABIC_FORMS[ch];
+            if (!forms) {
+                out += ch;
+                continue;
+            }
+            const joinPrev = prev && dualJoin(prev);
+            const joinNext = next && canJoin(next);
+            let form = 0;
+            if (joinPrev && joinNext) form = 3;
+            else if (joinPrev) form = 1;
+            else if (joinNext) form = 2;
+            out += forms[form];
+        }
+        return out;
+    }
+
+    function placeCoverBlessing() {
+        const node = document.getElementById("coverArcText");
+        if (!node) return;
+        node.textContent = Array.from(reshapeArabic(COVER_BLESSING)).reverse().join("");
+    }
+
+    placeCoverBlessing();
 
     function loadPhoto(fileName, onFound) {
         let index = 0;
