@@ -10,7 +10,6 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 
 body {
@@ -191,7 +190,7 @@ body.is-locked {
 
 .hero {
     position: relative;
-    min-height: 92dvh;
+    min-height: 88dvh;
     display: flex;
     align-items: flex-end;
     justify-content: center;

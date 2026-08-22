@@ -34,15 +34,87 @@
     cover.classList.add("is-ready");
     document.body.classList.add("is-locked");
 
+    var autoScrollTimer = 0;
+    var autoScrollFrame = 0;
+    var autoScrolling = false;
+    var canCancelAutoScroll = false;
+
+    function scrollYNow() {
+        return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+
+    function setScrollY(y) {
+        window.scrollTo(0, y);
+        document.documentElement.scrollTop = y;
+        document.body.scrollTop = y;
+    }
+
+    function stopAutoScroll() {
+        if (!canCancelAutoScroll && autoScrolling) return;
+        autoScrolling = false;
+        canCancelAutoScroll = false;
+        if (autoScrollTimer) {
+            window.clearTimeout(autoScrollTimer);
+            autoScrollTimer = 0;
+        }
+        if (autoScrollFrame) {
+            window.cancelAnimationFrame(autoScrollFrame);
+            autoScrollFrame = 0;
+        }
+    }
+
+    function startSlowScroll() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        var from = 0;
+        setScrollY(from);
+        var to = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        if (to <= 8) return;
+
+        autoScrolling = true;
+        canCancelAutoScroll = false;
+        window.setTimeout(function () {
+            canCancelAutoScroll = true;
+        }, 400);
+
+        var started = performance.now();
+        var pixelsPerSecond = 38;
+        var duration = Math.max(22000, (to / pixelsPerSecond) * 1000);
+
+        function step(now) {
+            if (!autoScrolling) return;
+            to = Math.max(to, document.documentElement.scrollHeight - window.innerHeight);
+            var t = Math.min(1, (now - started) / duration);
+            setScrollY(from + (to - from) * t);
+            if (t < 1) {
+                autoScrollFrame = window.requestAnimationFrame(step);
+            } else {
+                autoScrolling = false;
+                canCancelAutoScroll = false;
+            }
+        }
+
+        autoScrollFrame = window.requestAnimationFrame(step);
+    }
+
     function openInvitation() {
         if (cover.classList.contains("is-open")) return;
         tryPlay();
         cover.classList.add("is-open");
         document.body.classList.remove("is-locked");
-        window.scrollTo(0, 0);
+        setScrollY(0);
+        autoScrollTimer = window.setTimeout(startSlowScroll, 900);
     }
 
     openInvite.addEventListener("click", openInvitation);
+
+    window.addEventListener("wheel", stopAutoScroll, { passive: true });
+    window.addEventListener("touchmove", stopAutoScroll, { passive: true });
+    window.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowDown" || event.key === "ArrowUp" || event.key === "PageDown" || event.key === " " ) {
+            stopAutoScroll();
+        }
+    });
 
     function tryPlay() {
         if (!song) return;
@@ -115,7 +187,7 @@
         });
     }
 
-    addToCalendar.addEventListener("click", function () {
+    if (addToCalendar) addToCalendar.addEventListener("click", function () {
         const ics = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
