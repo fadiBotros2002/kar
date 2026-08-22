@@ -232,7 +232,8 @@ body.is-locked {
     grid-template-columns: minmax(16rem, 0.9fr) minmax(18rem, 1.1fr);
     gap: 4.5rem;
     align-items: center;
-    padding: 5.5rem 0;
+    padding: 4.2rem 0 5.5rem;
+    padding-top: max(4.2rem, calc(2.4rem + env(safe-area-inset-top)));
 }
 
 .intro__copy { text-align: right; }
